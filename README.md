@@ -48,7 +48,10 @@ bundle exec rails g spree_account_recurring:install
 
 Usage
 -----
-
+Add to ```config/initializers/spree.rb```
+```
+Rails.application.config.spree.payment_methods << Spree::Recurring::StripeRecurring
+```
 At Admin end this will add a configuration tab as "Recurring".
 
 * Creating a Recurring Provider:
