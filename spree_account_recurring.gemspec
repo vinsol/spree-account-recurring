@@ -14,10 +14,13 @@ Gem::Specification.new do |s|
   s.files     = Dir['LICENSE', 'README.md', 'app/**/*', 'config/**/*', 'lib/**/*', 'db/**/*']
   s.require_path = 'lib'
   s.requirements << 'none'
+  spree_version = '>= 3.0.0', '< 4.0.0'
 
-  s.add_dependency 'spree_core', '~> 3.2.0.rc2'
+
+  s.add_dependency 'spree_core', spree_version
   s.add_dependency 'stripe', '1.16.0'
   s.add_dependency 'stripe_tester'
+  s.add_development_dependency 'appraisal'
 
   s.add_development_dependency 'rspec-rails',  '~> 3.4'
 end
