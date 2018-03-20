@@ -1,7 +1,7 @@
 module Spree
   class RecurringHooksController < BaseController
-    skip_before_filter :verify_authenticity_token
-    
+    skip_before_action :verify_authenticity_token
+
     before_action :authenticate_webhook
     before_action :find_subscription
 
@@ -21,7 +21,7 @@ module Spree
     def event
       @event ||= (Rails.env.production? ? params.deep_dup : params.deep_dup[:recurring_hook])
     end
-    
+
     def authenticate_webhook
       render_status_ok if event.blank? || (event[:livemode] != Rails.env.production?) || (!Spree::Recurring::StripeRecurring::WEBHOOKS.include?(event[:type]))
     end
